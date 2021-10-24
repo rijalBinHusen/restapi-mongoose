@@ -18,5 +18,8 @@ module.exports = app => {
     // retrieve data by id
     router.get("/:id", tutorials.findOne)
 
+    // delete data by id
+    router.delete("/:id", tutorials.delete)
+
     app.use("/api/tutorials", router)
 }

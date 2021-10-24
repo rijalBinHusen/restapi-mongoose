@@ -107,3 +107,23 @@ exports.findOne = (req, res) => {
             })
         })
 }
+
+// Delete tutorial by id
+exports.delete = (req, res) => {
+    const id = req.params.id
+
+    Tutorial.findByIdAndRemove(id)
+        .then((data) => {
+            if(!data) {
+                res.status(400).send({
+                    message: `Can't delete tutorial with id ${id}`
+                })
+            }
+            else res.send({ message: `Tutorial with id ${id} was deleted!`})
+        })
+        .catch((err) => {
+            res.status(500).send({
+                message: err.message || `Can't delete tutorial with id ${id}`
+            })
+        })
+}

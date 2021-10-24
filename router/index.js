@@ -9,5 +9,8 @@ module.exports = app => {
     // retrieve all
     router.get("/", tutorials.findAll)
 
+    // updata data by id
+    router.put("/:id", tutorials.update)
+
     app.use("/api/tutorials", router)
 }

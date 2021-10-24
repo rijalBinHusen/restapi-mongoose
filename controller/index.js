@@ -89,3 +89,21 @@ exports.findAllPublished = (req, res) => {
             })
         })
 }
+
+// Find tutorial by id
+exports.findOne = (req, res) => {
+    const id = req.params.id
+
+    Tutorial.findById(id)
+        .then((data) => {
+            if(!data) {
+                res.status(404).send({ message: `Can not found tutorial with id ${id}`})
+            }
+            else res.send(data)
+        })
+        .catch((err) => {
+            res.status(500).send({
+                message: err.message || "Some error occured while find a tutorial in database"
+            })
+        })
+}

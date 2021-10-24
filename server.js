@@ -30,3 +30,17 @@ const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
+
+// require model
+const db = require("./models");
+
+// test to connect
+db.mongoose
+    .connect(db.url)
+    .then(() => {
+        console.log("Connected")
+    })
+    .catch((err) => {
+        console.log("Cannot connect", err)
+        process.exit()
+    })

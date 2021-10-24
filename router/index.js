@@ -21,5 +21,8 @@ module.exports = app => {
     // delete data by id
     router.delete("/:id", tutorials.delete)
 
+    // delete all data
+    router.delete("/", tutorials.deleteAll)
+
     app.use("/api/tutorials", router)
 }

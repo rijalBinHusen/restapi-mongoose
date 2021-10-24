@@ -127,3 +127,18 @@ exports.delete = (req, res) => {
             })
         })
 }
+
+// Delete all tutorial
+exports.deleteAll = (req, res) => {
+    Tutorial.deleteMany({})
+        .then((data) => {
+            res.send({
+                message: `all Tutorials was deleted!`
+            })
+        })
+        .catch((err) => {
+            res.status(500).send({
+                message: err.message || "Some error occured while deleting all tutorial"
+            })
+        })
+}

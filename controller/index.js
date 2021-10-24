@@ -32,3 +32,20 @@ exports.create = (req, res) => {
             })
         })
 };
+
+
+// find all tutorial in databasee
+exports.findAll = (req, res) => {
+    const title = req.query.title;
+    let condition = title ? { title: { $regex: new RegExp(title), $options: "i" } } : {};
+
+    Tutorial.find(condition)
+        .then((data) => {
+            res.send(data)
+        })
+        .catch((err) => {
+            res.status(500).send({
+                message: err.message || "Some error occured while find all tutorial in database"
+            })
+        })
+}

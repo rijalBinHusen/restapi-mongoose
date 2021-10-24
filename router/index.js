@@ -6,5 +6,8 @@ module.exports = app => {
     // Create a new tutorial
     router.post("/", tutorials.create)
 
+    // retrieve all
+    router.get("/", tutorials.findAll)
+
     app.use("/api/tutorials", router)
 }

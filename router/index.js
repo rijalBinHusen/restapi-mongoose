@@ -12,5 +12,8 @@ module.exports = app => {
     // updata data by id
     router.put("/:id", tutorials.update)
 
+    // retrieve all data with condition published == true
+    router.get("/published", tutorials.findAllPublished)
+
     app.use("/api/tutorials", router)
 }

@@ -76,3 +76,16 @@ exports.update = (req, res) => {
             })
         })
 }
+
+// find all with condition
+exports.findAllPublished = (req, res) => {
+    Tutorial.find({ published: true})
+        .then((data) => {
+            res.send(data)
+        })
+        .catch((err) => {
+            res.status(500).send({
+                message: err.message || "Some error occured while find tutorials in database"
+            })
+        })
+}
